@@ -60,7 +60,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
   end
 
   test "should not send follow notification email" do
-    not_notify = users(:hogehoge)
+    not_notify = users(:michael)
     post relationships_path, params: {followed_id: not_notify.id}
     assert_equal 0, ActionMailer::Base.deliveries.size
   end
@@ -73,7 +73,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
   end
 
   test "should not send unfollow notification email" do
-    not_notify = users(:hogehoge)
+    not_notify = users(:archer)
     @user.follow(not_notify)
     relationship = @user.active_relationships.find_by(followed_id: not_notify.id)
     delete relationship_path(relationship)

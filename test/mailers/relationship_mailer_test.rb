@@ -1,7 +1,7 @@
 class RelationshipMailerTest < ActionMailer::TestCase
   test "follow_notification" do
-    user = users(:hoge)
-    follower = users(:fuga)
+    user = users(:michael)
+    follower = users(:archer)
     mail = RelationshipMailer.follow_notification(user, follower)
     assert_equal "#{follower.name} started following you", mail.subject
     assert_equal [user.email], mail.to
@@ -11,8 +11,8 @@ class RelationshipMailerTest < ActionMailer::TestCase
   end
 
   test "unfollow_notification" do
-    user = users(:hoge)
-    follower = users(:fuga)
+    user = users(:michael)
+    follower = users(:archer)
     mail = RelationshipMailer.unfollow_notification(user, follower)
     assert_equal "#{follower.name} unfollowed you", mail.subject
     assert_equal [user.email], mail.to
